@@ -2,12 +2,21 @@
 
 > This package used to scaffold basic login, registration and reset password in restful api.
 
-#### Installation via [composer](https://getcomposer.org/)
+## Installation via [composer](https://getcomposer.org/)
 
 ```bash
 composer require elnooronline laravel-api-authentication
 ```
-#### Configration
+## Migrations
+> You must publish the migration files to create the authentication tables.
+```bash
+php artisan vendor:publish --tag api-authentication:migration
+```
+> Then run the following command:
+```bash
+php artisan migrate && php artisan passport:install
+```
+## Configration
 > After installation run the following command if you want to override any thing in the package. 
 ```bash
 php artisan vendor:publish --tag api-authentication:config
@@ -54,7 +63,7 @@ return [
 ```
 > If you want to add your own login or registration or reset password you should create custom comtrollers and requests and extends the package classes.
 
-##### Examples
+### Examples
 ```php
 // app/Http/Controllers/Api/LoginController.php
 
@@ -71,7 +80,7 @@ return [
     'user-resource' => \App\Http\Resources\UserResource::class,
 ];
 ```
-#### Events
+## Events
 > If you want to add envents during the authentication process. You may attach listeners to these events in your `EventServiceProvider`:
 ```php
 /**
@@ -101,3 +110,6 @@ protected $listen = [
      ],
 ];
 ```
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
