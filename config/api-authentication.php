@@ -21,6 +21,17 @@ return [
      */
     'player-id-field-name' => 'onesignal-player-id',
 
+    /**
+     * The urls of the authentications services.
+     */
+    'urls' => [
+        'login' => '/api/login',
+        'register' => '/api/register',
+        'forget' => '/api/password/forget',
+        'check-code' => '/api/password/check-code',
+        'reset' => '/api/password/reset',
+    ],
+
     'controllers' => [
         'login' => \Elnooronline\LaravelApiAuthentication\Http\Controllers\Auth\LoginController::class,
         'register' => \Elnooronline\LaravelApiAuthentication\Http\Controllers\Auth\RegisterController::class,
