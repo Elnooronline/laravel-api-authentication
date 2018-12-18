@@ -1,0 +1,38 @@
+<?php
+
+return [
+    /**
+     * The name of user model.
+     */
+    'user-model' => \App\User::class,
+
+    /**
+     * Determine whether the application support register service.
+     */
+    'register' => true,
+
+    /**
+     * The resource transformer for the user model.
+     */
+    'user-resource' => \Elnooronline\LaravelApiAuthentication\Http\Resources\UserResource::class,
+
+    /**
+     * The name of onesignal player id field.
+     */
+    'player-id-field-name' => 'onesignal-player-id',
+
+    'controllers' => [
+        'login' => \Elnooronline\LaravelApiAuthentication\Http\Controllers\Auth\LoginController::class,
+        'register' => \Elnooronline\LaravelApiAuthentication\Http\Controllers\Auth\RegisterController::class,
+        'forget' => \Elnooronline\LaravelApiAuthentication\Http\Controllers\Auth\ForgotPasswordController::class,
+        'reset' => \Elnooronline\LaravelApiAuthentication\Http\Controllers\Auth\ResetPasswordController::class,
+    ],
+
+    'validation' => [
+        'login' => \Elnooronline\LaravelApiAuthentication\Http\Requests\LoginRequest::class,
+        'register' => \Elnooronline\LaravelApiAuthentication\Http\Requests\RegisterRequest::class,
+        'forget' => \Elnooronline\LaravelApiAuthentication\Http\Requests\ForgetPasswordRequest::class,
+        'check-code' => \Elnooronline\LaravelApiAuthentication\Http\Requests\CheckCodeRequest::class,
+        'reset' => \Elnooronline\LaravelApiAuthentication\Http\Requests\ResetPasswordRequest::class,
+    ],
+];
