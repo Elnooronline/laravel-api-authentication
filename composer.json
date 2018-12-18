@@ -26,5 +26,12 @@
         "psr-4": {
             "Elnooronline\\LaravelApiAuthentication\\": "src/"
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Elnooronline\\LaravelApiAuthentication\\Providers\\ServiceProvider"
+            ]
+        }
     }
 }
