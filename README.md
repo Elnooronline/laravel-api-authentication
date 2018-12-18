@@ -10,13 +10,12 @@ composer require elnooronline laravel-api-authentication
 > Import The following traits in `\App\User` model:
 ```php
 
-use Laravel\Passport\HasApiTokens;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Elnooronline\LaravelApiAuthentication\Models\Traits\HasApiAuthentication;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasApiAuthentication, Notifiable;
+    use HasApiAuthentication, Notifiable;
     ...
 }
 ``` 

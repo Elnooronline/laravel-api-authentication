@@ -2,11 +2,13 @@
 
 namespace Elnooronline\LaravelApiAuthentication\Models\Traits;
 
+use Laravel\Passport\HasApiTokens;
 use Elnooronline\LaravelApiAuthentication\Models\ServiceToken;
 use Elnooronline\LaravelApiAuthentication\Models\ApiPasswordResetToken;
 
 trait HasApiAuthentication
 {
+    use HasApiTokens;
     /**
      * Determine if the user can login within the api.
      *
