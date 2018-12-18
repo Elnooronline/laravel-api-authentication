@@ -3,7 +3,6 @@
 namespace Elnooronline\LaravelApiAuthentication\Http\Controllers\Auth;
 
 use Illuminate\Http\Response;
-use Illuminate\Routing\Controller;
 use Elnooronline\LaravelApiAuthentication\ResetPassword;
 
 class ResetPasswordController extends Controller
