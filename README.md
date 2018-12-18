@@ -67,17 +67,32 @@ return [
 ```php
 // app/Http/Controllers/Api/LoginController.php
 
+namespace App\Http\Controllers\Api\Auth;
+
 use Elnooronline\LaravelApiAuthentication\Http\Controllers\Auth\LoginController as BaseLoginController;
 
 class LoginController extends BaseLoginController
 {
     ...
 }
-``` 
+```
+Then update the `api-authentication.php` and replace the login controller :
+```php
+return [
+    ...
+    'controllers' => [
+        'login' => \App\Http\Controllers\Auth\LoginController::class,
+        ...
+    ],
+    ...
+];
+```
 > Also you can add your own user resource class in `api-authentication.php` config file:
 ```php
 return [
+    ...
     'user-resource' => \App\Http\Resources\UserResource::class,
+    ...
 ];
 ```
 ## Events
