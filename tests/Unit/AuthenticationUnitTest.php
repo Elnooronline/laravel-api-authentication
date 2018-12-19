@@ -18,8 +18,12 @@ class AuthenticationUnitTest extends TestCase
 
         $response = $this->postJson('/api/login', []);
         $response->assertStatus(422);
-        $response->assertJsonStructure([
-            'errors' => ['email', 'password']
+        $response->assertJsonValidationErrors(['email', 'password']);
+
+        $response = $this->postJson('/api/login', [
+            'email' => 'admin@elnooronline.com',
+            'password' => 'secret',
         ]);
+        $response->assertSuccessful();
     }
 }
