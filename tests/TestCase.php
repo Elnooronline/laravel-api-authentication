@@ -4,6 +4,7 @@ namespace Tests;
 
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 use Elnooronline\LaravelApiAuthentication\Providers\ServiceProvider;
+use Tests\Models\User;
 
 class TestCase extends OrchestraTestCase
 {
@@ -47,5 +48,7 @@ class TestCase extends OrchestraTestCase
             'database' => ':memory:',
             'prefix' => '',
         ]);
+
+        $app['config']->set('auth.providers.users.model', User::class);
     }
 }
