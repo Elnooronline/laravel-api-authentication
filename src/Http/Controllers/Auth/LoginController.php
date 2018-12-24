@@ -31,7 +31,7 @@ class LoginController extends Controller
     {
         $forgetPasswordRequest = config('api-authentication.validation.login');
 
-        $this->requestValidate($forgetPasswordRequest::capture());
+        $this->requestValidate($forgetPasswordRequest::createFromBase($request));
     }
 
     /**

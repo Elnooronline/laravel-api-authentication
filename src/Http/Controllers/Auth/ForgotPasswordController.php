@@ -2,6 +2,7 @@
 
 namespace Elnooronline\LaravelApiAuthentication\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Elnooronline\LaravelApiAuthentication\ResetPassword;
 
@@ -24,18 +25,15 @@ class ForgotPasswordController extends Controller
     /**
      * Send code to mobile.
      *
+     * @param \Illuminate\Http\Request $request
      * @return null|array
-     * @throws \Illuminate\Database\Eloquent\ModelNotFoundException
      * @throws \Illuminate\Validation\ValidationException
-     * @throws \RuntimeException
      */
-    public function sendCode()
+    public function sendCode(Request $request)
     {
         $forgetPasswordRequest = config('api-authentication.validation.forget');
 
-        $this->requestValidate($forgetPasswordRequest::capture());
-
-        $request = request();
+        $this->requestValidate($forgetPasswordRequest::createFromBase($request));
 
         $code = $this->resetPassword->createVerificationCode($request->email);
 
@@ -64,13 +62,11 @@ class ForgotPasswordController extends Controller
      * @return array|\Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
      * @throws \Exception
      */
-    public function verifyCode()
+    public function verifyCode(Request $request)
     {
         $forgetPasswordRequest = config('api-authentication.validation.check-code');
 
-        $this->requestValidate($forgetPasswordRequest::capture());
-
-        $request = request();
+        $this->requestValidate($forgetPasswordRequest::createFromBase($request));
 
         $token = $this->resetPassword->checkCode($request->email, $request->code);
         // No token has returned

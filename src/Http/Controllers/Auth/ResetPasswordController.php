@@ -2,6 +2,7 @@
 
 namespace Elnooronline\LaravelApiAuthentication\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Elnooronline\LaravelApiAuthentication\ResetPassword;
 
@@ -24,15 +25,15 @@ class ResetPasswordController extends Controller
     /**
      * reset a new password.
      *
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Resources\Json\JsonResource
+     * @throws \Illuminate\Validation\ValidationException
      */
-    public function reset()
+    public function reset(Request $request)
     {
         $forgetPasswordRequest = config('api-authentication.validation.reset');
 
-        $this->requestValidate($forgetPasswordRequest::capture());
-
-        $request = request();
+        $this->requestValidate($forgetPasswordRequest::createFromBase($request));
 
         // Check the token and remove it.
         $user = $this->resetPassword->checkToken($request->token);

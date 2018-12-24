@@ -43,7 +43,7 @@ class RegisterController extends Controller
     {
         $forgetPasswordRequest = config('api-authentication.validation.register');
 
-        $this->requestValidate($forgetPasswordRequest::capture());
+        $this->requestValidate($forgetPasswordRequest::createFromBase($request));
 
         event(new Registered($user = $this->create($request->all())));
 
