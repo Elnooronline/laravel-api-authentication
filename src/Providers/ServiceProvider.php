@@ -2,6 +2,7 @@
 
 namespace Elnooronline\LaravelApiAuthentication\Providers;
 
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\ServiceProvider as Provider;
 
 class ServiceProvider extends Provider
@@ -13,6 +14,10 @@ class ServiceProvider extends Provider
      */
     public function boot()
     {
+        Validator::extend('onesignal_player_id', function ($attribute, $value, $parameters, $validator) {
+            return preg_match("/[a-z0-9]{8}-([a-z0-9]{4}-){3}[a-z0-9]{12}/", $value);
+        });
+
         $this->publishes([
             __DIR__.'/../../database/migrations' => database_path('migrations')
         ], 'api-authentication:migration');
