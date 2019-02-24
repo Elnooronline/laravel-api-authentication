@@ -26,6 +26,7 @@ class LoginRequest extends FormRequest
         return [
             'email' => 'required|string',
             'password' => 'required|string',
+            config('api-authentication.player-id-field-name') => 'nullable|onesignal_player_id',
         ];
     }
 

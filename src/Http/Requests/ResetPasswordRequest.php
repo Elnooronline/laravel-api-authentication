@@ -26,6 +26,7 @@ class ResetPasswordRequest extends FormRequest
         return [
             'token' => 'required|string',
             'password' => 'required|confirmed',
+            config('api-authentication.player-id-field-name') => 'nullable|onesignal_player_id',
         ];
     }
 
