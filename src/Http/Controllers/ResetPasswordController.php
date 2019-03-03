@@ -1,6 +1,6 @@
 <?php
 
-namespace Elnooronline\LaravelApiAuthentication\Http\Controllers\Auth;
+namespace Elnooronline\LaravelApiAuthentication\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;

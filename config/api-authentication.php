@@ -36,10 +36,10 @@ return [
      * The authentications controllers.
      */
     'controllers' => [
-        'login' => \Elnooronline\LaravelApiAuthentication\Http\Controllers\Auth\LoginController::class,
-        'register' => \Elnooronline\LaravelApiAuthentication\Http\Controllers\Auth\RegisterController::class,
-        'forget' => \Elnooronline\LaravelApiAuthentication\Http\Controllers\Auth\ForgotPasswordController::class,
-        'reset' => \Elnooronline\LaravelApiAuthentication\Http\Controllers\Auth\ResetPasswordController::class,
+        'login' => \Elnooronline\LaravelApiAuthentication\Http\Controllers\LoginController::class,
+        'register' => \Elnooronline\LaravelApiAuthentication\Http\Controllers\RegisterController::class,
+        'forget' => \Elnooronline\LaravelApiAuthentication\Http\Controllers\ForgotPasswordController::class,
+        'reset' => \Elnooronline\LaravelApiAuthentication\Http\Controllers\ResetPasswordController::class,
     ],
 
     /**

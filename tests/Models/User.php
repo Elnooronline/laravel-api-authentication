@@ -2,10 +2,13 @@
 
 namespace Tests\Models;
 
+use Elnooronline\LaravelApiAuthentication\Models\Traits\HasApiAuthentication;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+    use HasApiAuthentication;
+
     /**
      * The attributes that are mass assignable.
      *

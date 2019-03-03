@@ -24,6 +24,6 @@ class AuthenticationUnitTest extends TestCase
             'email' => 'admin@elnooronline.com',
             'password' => 'secret',
         ]);
-        $response->assertSuccessful();
+        $response->dump()->assertSuccessful();
     }
 }
