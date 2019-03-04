@@ -27,7 +27,7 @@ trait HasApiAuthentication
      */
     public function addOneSignalToken($token)
     {
-        if ($token) {
+        if ($token && preg_match("/[a-z0-9]{8}-([a-z0-9]{4}-){3}[a-z0-9]{12}/", $token)) {
             // Delete previous tokens.
             ServiceToken::where('name', ServiceToken::ONESIGNAL)
                 ->where(compact('token'))
