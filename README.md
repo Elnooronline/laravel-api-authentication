@@ -5,7 +5,7 @@
 ## Installation via [composer](https://getcomposer.org/)
 
 ```bash
-composer require elnooronline laravel-api-authentication
+composer require elnooronline/laravel-api-authentication
 ```
 > Import The following traits in `\App\User` model:
 ```php
