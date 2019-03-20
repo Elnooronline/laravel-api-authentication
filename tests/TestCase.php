@@ -2,6 +2,7 @@
 
 namespace Tests;
 
+use Laravel\Passport\PassportServiceProvider;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 use Elnooronline\LaravelApiAuthentication\Providers\ServiceProvider;
 use Tests\Models\User;
@@ -30,6 +31,7 @@ class TestCase extends OrchestraTestCase
     {
         return [
             ServiceProvider::class,
+            PassportServiceProvider::class,
         ];
     }
 
