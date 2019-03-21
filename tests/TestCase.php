@@ -2,10 +2,13 @@
 
 namespace Tests;
 
+use Laravel\Passport\PersonalAccessTokenResult;
+use Mockery;
+use Tests\Models\User;
 use Laravel\Passport\PassportServiceProvider;
+use Laravel\Passport\PersonalAccessTokenFactory;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 use Elnooronline\LaravelApiAuthentication\Providers\ServiceProvider;
-use Tests\Models\User;
 
 class TestCase extends OrchestraTestCase
 {
@@ -18,7 +21,7 @@ class TestCase extends OrchestraTestCase
 
         $this->loadLaravelMigrations(['--database' => 'testbench']);
 
-        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
     }
 
     /**
@@ -52,5 +55,21 @@ class TestCase extends OrchestraTestCase
         ]);
 
         $app['config']->set('auth.providers.users.model', User::class);
+    }
+
+    /**
+     * @param \Illuminate\Foundation\Application $app
+     * @return array
+     */
+    protected function overrideApplicationBindings($app)
+    {
+        return [
+            PersonalAccessTokenFactory::class => function () {
+                return Mockery::mock(PersonalAccessTokenFactory::class, function ($mock) {
+                    $mock->shouldReceive('make')->andReturn(
+                        new PersonalAccessTokenResult('test_access_token', 'test_token')
+                    );
+                });
+            }];
     }
 }
