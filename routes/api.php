@@ -14,19 +14,22 @@ Route::as('api.')
                 config('api-authentication.controllers.register').'@register'
             )->name('register');
         }
-        // password
-        Route::post(
-            config('api-authentication.urls.forget'),
-            config('api-authentication.controllers.forget').'@sendCode'
-        )->name('forget-password');
+        
+        // password reset
+        if (config('api-authentication.password-reset')) {
+            Route::post(
+                config('api-authentication.urls.forget'),
+                config('api-authentication.controllers.forget') . '@sendCode'
+            )->name('forget-password');
 
-        Route::post(
-            config('api-authentication.urls.check-code'),
-            config('api-authentication.controllers.forget').'@verifyCode'
-        )->name('verifyCode');
+            Route::post(
+                config('api-authentication.urls.check-code'),
+                config('api-authentication.controllers.forget') . '@verifyCode'
+            )->name('verifyCode');
 
-        Route::post(
-            config('api-authentication.urls.reset'),
-            config('api-authentication.controllers.reset').'@reset'
-        )->name('reset');
+            Route::post(
+                config('api-authentication.urls.reset'),
+                config('api-authentication.controllers.reset') . '@reset'
+            )->name('reset');
+        }
     });

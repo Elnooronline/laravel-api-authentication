@@ -12,6 +12,11 @@ return [
     'register' => true,
 
     /**
+     * Determine whether the application support password reset service.
+     */
+    'password-reset' => true,
+
+    /**
      * The resource transformer for the user model.
      */
     'user-resource' => \Elnooronline\LaravelApiAuthentication\Http\Resources\UserResource::class,
