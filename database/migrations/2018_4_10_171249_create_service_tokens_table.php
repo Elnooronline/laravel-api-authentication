@@ -14,10 +14,10 @@ class CreateServiceTokensTable extends Migration
     public function up()
     {
         Schema::create('service_tokens', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('name');
             $table->string('token', 500);
-            $table->unsignedInteger('user_id');
+            $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
