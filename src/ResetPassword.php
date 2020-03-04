@@ -218,7 +218,7 @@ class ResetPassword
      */
     protected function getCode()
     {
-        return str_random(6);
+        return rand(100000, 999999);
     }
 
     /**
